@@ -7,4 +7,10 @@ def Coin_Combinations(coins, value):
     returns:
      number of possible combinations to make value with givin coins in "coins"
   """
-  pass
+  coins.sort()
+  l = [0]*(value+1)
+  l[0] = 1
+  for c in coins :
+    for i in xrange(c,value+1) :
+        l[i] += l[i-c]
+  return l[-1]
